@@ -62,7 +62,7 @@ export function AuthProvider({ children }) {
   }, [])
 
   const value = {
-    currentUser, userDataObj, signup, logout, login, loading
+    currentUser, userDataObj, setUserDataObj, signup, logout, login, loading
   }
 
   return (

@@ -1,25 +1,17 @@
 import Dashboard from "@/components/Dashboard";
+import Loading from "@/components/Loading";
 import Login from "@/components/Login";
 import Main from "@/components/Main";
 
 export const metadata = {
-  title: "MoodFlow · Dashboard"
+    title: "Broodl · Dashboard",
 };
 
-export default function DashboardPage(){
-  const isAuthenticated = true
-  let children = (
-    <Login />
-  )
+export default function DashboardPage() {
 
-  if (isAuthenticated){
-    children = (
-      <Dashboard />
+    return (
+        <Main>
+            <Dashboard />
+        </Main>
     )
-  }
-  return (
-    <Main className="">
-       {children}
-    </Main>
-  )
 }

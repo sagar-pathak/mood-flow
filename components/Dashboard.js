@@ -3,13 +3,15 @@ import { Fugaz_One } from 'next/font/google';
 import React, { useEffect, useState } from 'react'
 import Calendar from './Calendar';
 import { useAuth } from '@/context/AuthContext';
-import Login from './Login';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '@/firebase';
 import Loading from './Loading';
+import Login from './Login';
 
 const fugaz = Fugaz_One({ subsets: ["latin"], weight: ['400'] });
 
-export default function Dashboard() {
 
+export default function Dashboard() {
   const { currentUser, userDataObj, setUserDataObj, loading } = useAuth()
   const [data, setData] = useState({})
   const now = new Date()
@@ -35,9 +37,6 @@ export default function Dashboard() {
   }
 
   async function handleSetMood(mood) {
-    // update the current state
-    // update global state
-    // update firebase
     const day = now.getDate()
     const month = now.getMonth()
     const year = now.getFullYear()
@@ -70,12 +69,14 @@ export default function Dashboard() {
     }
   }
 
+
+
   const moods = {
-    '$*@#$': '😭',
-    'Sad': '😢',
+    '&*@#$': '😭',
+    'Sad': '🥲',
     'Existing': '😶',
-    'Good': '🙂',
-    'Elated': '😍'
+    'Good': '😊',
+    'Elated': '😍',
   }
 
   useEffect(() => {
